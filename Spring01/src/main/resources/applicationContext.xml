@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+	
+	<!-- 利用配置文件，告诉Spring管理那些JavaBean对象 -->
+	<bean id="obj1" class="day01.HelloWorld"/>
+	
+	<!-- Spring配置文件中id属性和name属性功能一样         常用的属性是id -->
+	<bean name="obj2" class="day01.HelloWorld"/>
+	
+	<!-- 利用静态工厂方法创建对象 -->
+	<bean id="cal1" class="java.util.Calendar" factory-method="getInstance"/>
+	<!-- 如果eclipse安装过Spring Tools插件  alt+/ 会自动提示属性、类名和方法名 -->
+	
+	<!-- 利用bean对象cal1提供的过程方法创建对象 -->
+	<bean id="date1" factory-bean="cal1" factory-method="getTime"/>
+	
+	<!-- scope="prototype"属性设置以后，obj3是多例的，每次getBean都会创建一个新对象 -->
+	<bean id="obj3" class="day01.HelloWorld" scope="prototype"/>
+	
+	<!-- 测试对象生命周期管理方法 -->
+	<bean id="demo" class="day01.DemoBean" lazy-init="true" init-method="init" destroy-method="destroy"/>
+	
+	<!-- 测试多例对象的生命周期管理 -->
+	<!-- destroy-method 写上没有意义，不会被执行 -->
+	<bean id="demo2" class="day01.DemoBean2" scope="prototype" init-method="init"/>
+</beans>
