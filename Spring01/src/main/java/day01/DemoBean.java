@@ -2,26 +2,26 @@ package day01;
 
 import java.io.PrintWriter;
 import java.io.Serializable;
-
+//bbb
 public class DemoBean implements Serializable{
 
 	private PrintWriter out;
 	public void init(){
-		//初始化资源
+		//鍒濆鍖栬祫婧�
 		try {
 			out = new PrintWriter("demo.txt");
-			//我在这儿修改过
-			System.out.println("打开文件demo.txt");
+			//鎴戝湪杩欏効淇敼杩�
+			System.out.println("鎵撳紑鏂囦欢demo.txt");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void destroy(){
-		//关闭资源
+		//鍏抽棴璧勬簮
 		out.flush();
 		out.close();
-		System.out.println("demo.txt文件被关闭了");
+		System.out.println("demo.txt鏂囦欢琚叧闂簡");
 	}
 	
 	public void print(String str){
