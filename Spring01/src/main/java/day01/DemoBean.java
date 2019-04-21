@@ -7,20 +7,21 @@ public class DemoBean implements Serializable{
 
 	private PrintWriter out;
 	public void init(){
-		//³õÊ¼»¯×ÊÔ´
+		//åˆå§‹åŒ–èµ„æº
 		try {
 			out = new PrintWriter("demo.txt");
-			System.out.println("´ò¿ªÎÄ¼şdemo.txt");
+			//æˆ‘åœ¨è¿™å„¿ä¿®æ”¹è¿‡
+			System.out.println("æ‰“å¼€æ–‡ä»¶demo.txt");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void destroy(){
-		//¹Ø±Õ×ÊÔ´
+		//å…³é—­èµ„æº
 		out.flush();
 		out.close();
-		System.out.println("demo.txtÎÄ¼ş±»¹Ø±ÕÁË");
+		System.out.println("demo.txtæ–‡ä»¶è¢«å…³é—­äº†");
 	}
 	
 	public void print(String str){
