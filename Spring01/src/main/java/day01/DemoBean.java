@@ -2,7 +2,7 @@ package day01;
 
 import java.io.PrintWriter;
 import java.io.Serializable;
-//bbb
+//bbb+aaa
 public class DemoBean implements Serializable{
 
 	private PrintWriter out;
